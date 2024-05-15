@@ -6,8 +6,8 @@ import { Sketch } from "./sketch.js";
 
 const config = {
     title: 'Untitled',
-    width: '500',
-    height: '1000',
+    width: 500,
+    height: 1000,
     fg: 'black',
     bg: 'snow',
     showLines: true,
@@ -24,13 +24,14 @@ const svg = createSVG({
 })
 
 const sketch = new Sketch(config);
-console.log(sketch)
-
+const width = sketch.config.width;
+const height = sketch.config.height;
 
 for (let i = 0; i < 100; i++) {
-    // let x = Math.random() * width;
-    let x = (randomInteger(0, 10) + 0.5) * config.width / 10;
-    sketch.lines.push(new Line({ x: x, y: 0 }, { x: x, y: parseInt(config.height) }))
+    const a = new Vector(randomInteger(width), randomInteger(height));
+    const b = new Vector(randomInteger(width), randomInteger(height));
+    const l = new Line(a, b);
+    sketch.lines.push(l)
 }
 
 sketch.removeDuplicateLines();
