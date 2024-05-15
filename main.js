@@ -4,22 +4,21 @@ import { LCG, lerp, randomInteger, randomElement } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
 
-// const seed = randomInteger(0xFFFFFFFF);
-const seed = 0xFAFA00;
+// Use Math.random() to generate a 32-bit unsigned int seed
+const seed = randomInteger(0xFFFFFFFF);
 
 const config = {
-    title: 'Test',
+    title: '',
     width: 500,
     height: 500,
-    fg: 'black',
-    bg: 'snow',
+    fg: 'snow',
+    bg: 'black',
     showLines: true,
     showPoints: false,
     seed: seed
 }
 
 const prng = new LCG(config.seed);
-
 
 document.title = `${config.title} ${config.seed.toString(16)}`;
 
@@ -32,6 +31,12 @@ const svg = createSVG({
 
 const sketch = new Sketch(config);
 const { width, height } = sketch.config;
+
+///////////////////////////////////////////////////////
+
+
+// Put drawing code here
+// Create Lines and Points and push them to sketch
 
 for (let i = 0; i < 100; i++) {
     const a = new Vector(
@@ -46,6 +51,8 @@ for (let i = 0; i < 100; i++) {
     const line = new Line(a, b);
     sketch.lines.push(line)
 }
+
+//////////////////////////////////////////////////////
 
 sketch.draw(svg);
 initializeEventHandlers(svg, filename);
