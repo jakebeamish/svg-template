@@ -11,6 +11,10 @@ export function lerp(a, b, t) {
 }
 
 export function randomInteger(min, max, randomfn = Math.random()) {
+    if (max === undefined) {
+        max = min;
+        min = 0;
+    }
     return Math.floor(min + randomfn * (max - min));
 }
 
