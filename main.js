@@ -1,6 +1,7 @@
 import { createSVG, drawLine, drawPoint, downloadSVG } from "./createSVG.js";
-import { Vector } from "./geometry.js";
-import { SVG_NAMESPACE } from "./constants.js";
+import { Vector, Line } from "./geometry.js";
+import { fract } from "./utils.js";
+// import { SVG_NAMESPACE } from "./constants.js";
 
 
 const title = 'Testing';
@@ -9,28 +10,29 @@ const width = 500;
 const height = 500;
 
 const svg = createSVG({
-    width: width,
-    height: height,
+    width,
+    height,
     bg: 'snow',
     id: `${title}`
 })
 
-for (let i = 0; i < 100; i++) {
-    let vector = new Vector(
+let points = [];
+for (let i = 0; i < 3; i++) {
+    let point = new Vector(
         Math.random() * width,
         Math.random() * height
     )
-    drawPoint(svg, vector.x, vector.y);
+    points.push(point);
 }
 
-drawLine(svg, 10, 10, 100, 100);
-
-function sinFract(x, y, a, b, m) {
-    return fract(Math.sin(x * a + y * b) * m)
+for (let point of points) {
+    drawPoint(svg, point.x, point.y)
 }
 
-function fract(x) {
-    return x - Math.floor(x);
+for (let i = 0; i < 3; i++) {
+    const a = points[i];
+    const b = points[(i+1) % points.length];
+    drawLine(svg, a.x, a.y, b.x, b.y);
 }
 
 onkeydown = (event) => {
