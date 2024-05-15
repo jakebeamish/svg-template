@@ -1,6 +1,6 @@
 import { createSVG, drawLine, drawPoint, downloadSVG } from "./renderer.js";
 import { Vector, Line } from "./geometry.js";
-import { lerp } from "./utils.js";
+import { lerp, randomInteger } from "./utils.js";
 
 const title = 'Testing';
 const width = 500;
@@ -17,43 +17,24 @@ const sketch = {
     lines: []
 }
 
-for (let i = 0; i < 15; i++) {
-    let p = new Vector(
-        (Math.floor(Math.random() * width / 100) + 0.5) * 100,
-        (Math.floor(Math.random() * height / 160) + 0.5) * 160
-    );
-    sketch.points.push(p)
-}
-
 for (let point of sketch.points) {
     drawPoint(svg, point.x, point.y)
 }
 
-for (let i = 0; i < sketch.points.length - 1; i++) {
-    const a = sketch.points[i];
-    const b = sketch.points[(i + 1) % sketch.points.length]
-    let line = new Line(a, b);
-    sketch.lines.push(line);
+for (let i = 0; i < 100; i++) {
+    // let x = Math.random() * width;
+    let x = (randomInteger(0, 10)+0.5) * width/10;
+    sketch.lines.push(new Line({ x: x, y: 0 }, { x: x, y: height }))
 }
 
 
-for (let i = 0; i < 3; i++) {
-    let l1 = sketch.lines[Math.floor(Math.random() * sketch.lines.length)];
-    let l2 = sketch.lines[Math.floor(Math.random() * sketch.lines.length)];
+let jsonObject = sketch.lines.map(JSON.stringify);
+let uniqueSet = new Set(jsonObject);
+let uniqueArray = Array.from(uniqueSet).map(JSON.parse)
+sketch.lines = uniqueArray;
 
-    for (let i = 0; i < 30; i++) {
-        let v = new Vector(
-            lerp(l1.a.x, l1.b.x, i / 29),
-            lerp(l1.a.y, l1.b.y, i / 29)
-        )
-        let u = new Vector(
-            lerp(l2.a.x, l2.b.x, i / 29),
-            lerp(l2.a.y, l2.b.y, i / 29)
-        )
+console.log(sketch.lines.length);
 
-        drawLine(svg, u.x, u.y, v.x, v.y, fg);
-    }
-}
 
 for (let line of sketch.lines) {
     drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, fg)
