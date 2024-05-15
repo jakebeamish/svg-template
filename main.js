@@ -1,20 +1,30 @@
 import { createSVG } from "./renderer.js";
 import { Vector, Line, intersectionLineLine } from "./geometry.js";
-import { lerp, randomInteger, randomElement } from "./utils.js";
+import { LCG, lerp, randomInteger, randomElement } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
 
+// const seed = randomInteger(0xFFFFFFFF);
+const seed = 1;
+
 const config = {
-    title: 'line intersection test',
+    title: 'Test',
     width: 500,
-    height: 1000,
+    height: 500,
     fg: 'black',
     bg: 'snow',
     showLines: true,
-    showPoints: false
+    showPoints: false,
+    seed: seed
 }
 
-document.title = config.title;
+const prng = new LCG(config.seed);
+let test = ["help", "me", "how"]
+for (let i = 0; i < 100; i++) {
+    console.log(randomElement(test, prng.next()));
+}
+
+document.title = `${config.title} ${config.seed.toString(16)}`;
 
 const svg = createSVG({
     width: config.width,
@@ -27,23 +37,10 @@ const sketch = new Sketch(config);
 const width = sketch.config.width;
 const height = sketch.config.height;
 
-for (let i = 0; i < 10000; i++) {
-    const a = new Vector(randomInteger(width), randomInteger(height));
-    const b = new Vector(randomInteger(width), randomInteger(height));
-    const l = new Line(a, b);
-    let valid = true;
-    for (let other of sketch.lines) {
-        if (intersectionLineLine(l, other)) {
-            valid = false;
-        }
-    }
-    if (valid) { sketch.lines.push(l) };
-}
 
 sketch.draw(svg);
-
 initializeEventHandlers(svg, filename);
 
 function filename() {
-    return `${config.title}_${config.width}x${config.height}`
+    return `${config.title}_${config.seed.toString(16)}_${config.width}x${config.height}`
 }
