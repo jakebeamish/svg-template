@@ -4,3 +4,10 @@ export class Vector {
         this.y = y
     }
 }
+
+export class Line {
+    constructor(a, b) {
+        this.a = a;
+        this.b = b
+    }
+}
