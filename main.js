@@ -1,5 +1,5 @@
 import { createSVG, drawLine, drawPoint } from "./renderer.js";
-import { Vector, Line } from "./geometry.js";
+import { Vector, Line, intersectionLineLine } from "./geometry.js";
 import { lerp, randomInteger, randomElement } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
@@ -27,11 +27,17 @@ const sketch = new Sketch(config);
 const width = sketch.config.width;
 const height = sketch.config.height;
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 10000; i++) {
     const a = new Vector(randomInteger(width), randomInteger(height));
     const b = new Vector(randomInteger(width), randomInteger(height));
     const l = new Line(a, b);
-    sketch.lines.push(l)
+    let valid = true;
+    for (let other of sketch.lines) {
+        if (intersectionLineLine(l, other)) {
+            valid = false;
+        }
+    }
+    if (valid) { sketch.lines.push(l) };
 }
 
 sketch.removeDuplicateLines();
@@ -45,7 +51,7 @@ if (config.showLines) {
 if (config.showPoints) {
     for (let point of sketch.points) {
         drawPoint(svg, point.x, point.y)
-    }    
+    }
 }
 
 initializeEventHandlers(svg, filename);
