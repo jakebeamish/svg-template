@@ -2,16 +2,12 @@ import { createSVG, drawLine, drawPoint, downloadSVG } from "./renderer.js";
 import { Vector, Line } from "./geometry.js";
 
 const title = 'Testing';
-
 const width = 500;
 const height = 500;
 const bg = 'snow';
 
 const svg = createSVG({
-    width,
-    height,
-    bg,
-    id: `${title}`
+    width, height, bg, id: `${title}`
 })
 
 const sketch = {
@@ -21,8 +17,8 @@ const sketch = {
 
 for (let i = 0; i < 15; i++) {
     let p = new Vector(
-        (Math.floor(Math.random() * width/100)+0.5) * 100,
-        (Math.floor(Math.random() * height/100)+0.5) * 100
+        (Math.floor(Math.random() * width / 100) + 0.5) * 100,
+        (Math.floor(Math.random() * height / 100) + 0.5) * 100
     );
     sketch.points.push(p)
 }
@@ -35,7 +31,7 @@ for (let point of sketch.points) {
 
 for (let i = 0; i < sketch.points.length - 1; i++) {
     const a = sketch.points[i];
-    const b = sketch.points[(i+1)%sketch.points.length]
+    const b = sketch.points[(i + 1) % sketch.points.length]
     let line = new Line(a, b);
     sketch.lines.push(line);
 }
