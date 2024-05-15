@@ -2,7 +2,7 @@ import { createSVG, drawLine, drawPoint } from "./renderer.js";
 import { Vector, Line } from "./geometry.js";
 import { lerp, randomInteger, randomElement } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
-
+import { Sketch } from "./sketch.js";
 
 const config = {
     title: 'Untitled',
@@ -23,24 +23,17 @@ const svg = createSVG({
     title: config.title
 })
 
-const sketch = {
-    points: [],
-    lines: []
-}
+const sketch = new Sketch(config);
+console.log(sketch)
 
 
 for (let i = 0; i < 100; i++) {
     // let x = Math.random() * width;
     let x = (randomInteger(0, 10) + 0.5) * config.width / 10;
-    sketch.lines.push(new Line({ x: x, y: 0 }, { x: x, y: config.height }))
+    sketch.lines.push(new Line({ x: x, y: 0 }, { x: x, y: parseInt(config.height) }))
 }
 
-
-let jsonObject = sketch.lines.map(JSON.stringify);
-let uniqueSet = new Set(jsonObject);
-let uniqueArray = Array.from(uniqueSet).map(JSON.parse)
-sketch.lines = uniqueArray;
-
+sketch.removeDuplicateLines();
 
 if (config.showLines) {
     for (let line of sketch.lines) {
