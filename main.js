@@ -1,4 +1,4 @@
-import { createSVG, drawLine, drawPoint, downloadSVG } from "./createSVG.js";
+import { createSVG, drawLine, drawPoint, downloadSVG } from "./renderer.js";
 import { Vector, Line } from "./geometry.js";
 import { fract } from "./utils.js";
 // import { SVG_NAMESPACE } from "./constants.js";
