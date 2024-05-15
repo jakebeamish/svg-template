@@ -15,6 +15,12 @@ export function randomInteger(min, max, randomfn = Math.random()) {
         max = min;
         min = 0;
     }
+
+    if (max === typeof( Function )) {
+        randomfn = max;
+        max = min;
+        min = 0;
+    }
     return Math.floor(min + randomfn * (max - min));
 }
 

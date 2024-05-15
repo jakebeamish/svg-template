@@ -34,12 +34,12 @@ const height = sketch.config.height;
 
 for (let i = 0; i < 100; i++) {
     const a = new Vector(
-        randomInteger(0, width, prng.next()),
-        randomInteger(0, height, prng.next()),
+        randomInteger(width, prng.next()),
+        randomInteger(height, prng.next()),
     )
     const b = new Vector(
-        randomInteger(0, width, prng.next()),
-        randomInteger(0, height, prng.next()),
+        randomInteger(width, prng.next()),
+        randomInteger(height, prng.next()),
     )
 
     const line = new Line(a, b);
