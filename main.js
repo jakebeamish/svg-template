@@ -48,12 +48,12 @@ let l2 = sketch.lines[Math.floor(Math.random() * sketch.lines.length)];
 
 for (let i = 0; i < 30; i++) {
     let v = new Vector(
-        lerp(l1.a.x, l1.b.x, i/30),
-        lerp(l1.a.y, l1.b.y, i/30)
+        lerp(l1.a.x, l1.b.x, i/29),
+        lerp(l1.a.y, l1.b.y, i/29)
     )
     let u = new Vector(
-        lerp(l2.a.x, l2.b.x, i/30),
-        lerp(l2.a.y, l2.b.y, i/30)
+        lerp(l2.a.x, l2.b.x, i/29),
+        lerp(l2.a.y, l2.b.y, i/29)
     )
 
     drawLine(svg, u.x, u.y, v.x, v.y, fg);
