@@ -16,6 +16,11 @@ const svg = createSVG({
     id: `${title}`
 })
 
+
+
+
+// CREATE AND DRAW TRIANGLES
+
 let points = [];
 for (let i = 0; i < 3; i++) {
     let point = new Vector(
