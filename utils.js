@@ -5,3 +5,7 @@ export function sinFract(x, y, a, b, m) {
 export function fract(x) {
     return x - Math.floor(x);
 }
+
+export function lerp(a, b, t) {
+    return (1 - t) * a + t * b;
+}
