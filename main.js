@@ -5,7 +5,7 @@ import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
 
 const config = {
-    title: 'Untitled',
+    title: 'line intersection test',
     width: 500,
     height: 1000,
     fg: 'black',
