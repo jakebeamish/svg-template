@@ -19,6 +19,8 @@ const config = {
 }
 
 const prng = new LCG(config.seed);
+
+
 document.title = `${config.title} ${config.seed.toString(16)}`;
 
 const svg = createSVG({
@@ -29,17 +31,16 @@ const svg = createSVG({
 })
 
 const sketch = new Sketch(config);
-const width = sketch.config.width;
-const height = sketch.config.height;
+const { width, height } = sketch.config;
 
 for (let i = 0; i < 100; i++) {
     const a = new Vector(
-        randomInteger(width, prng.next()),
-        randomInteger(height, prng.next()),
+        randomInteger(0, width, prng.next()),
+        randomInteger(0, height, prng.next()),
     )
     const b = new Vector(
-        randomInteger(width, prng.next()),
-        randomInteger(height, prng.next()),
+        randomInteger(0, width, prng.next()),
+        randomInteger(0, height, prng.next()),
     )
 
     const line = new Line(a, b);
