@@ -1,16 +1,22 @@
 import { createSVG, drawLine, drawPoint } from "./renderer.js";
 import { Vector, Line } from "./geometry.js";
-import { lerp, randomInteger } from "./utils.js";
+import { lerp, randomInteger, randomElement } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
 
-const title = 'Testing';
-const width = 500;
-const height = 800;
-const fg = 'white';
-const bg = 'black';
+
+const config = {
+    title: 'Untitled',
+    width: '500',
+    height: '500',
+    fg: 'black',
+    bg: 'snow'
+}
 
 const svg = createSVG({
-    width, height, fg, bg, id: `${title}`
+    width: config.width,
+    height: config.height,
+    bg: config.bg,
+    title: config.title
 })
 
 const sketch = {
@@ -24,8 +30,8 @@ for (let point of sketch.points) {
 
 for (let i = 0; i < 100; i++) {
     // let x = Math.random() * width;
-    let x = (randomInteger(0, 10)+0.5) * width/10;
-    sketch.lines.push(new Line({ x: x, y: 0 }, { x: x, y: height }))
+    let x = (randomInteger(0, 10)+0.5) * config.width/10;
+    sketch.lines.push(new Line({ x: x, y: 0 }, { x: x, y: config.height }))
 }
 
 
@@ -34,15 +40,14 @@ let uniqueSet = new Set(jsonObject);
 let uniqueArray = Array.from(uniqueSet).map(JSON.parse)
 sketch.lines = uniqueArray;
 
-console.log(sketch.lines.length);
 
 
 for (let line of sketch.lines) {
-    drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, fg)
+    drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, config.fg)
 }
 
 initializeEventHandlers(svg, filename);
 
 function filename() {
-    return `${title}_${width}x${height}`
+    return `${config.title}_${config.width}x${config.height}`
 }

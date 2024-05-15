@@ -4,10 +4,10 @@ export function createSVG({
     width = 100,
     height = 100,
     bg = '#FFFFFA',
-    id = 'mySVG'
+    title = 'mySVG'
 }) {
     const svg = document.createElementNS(SVG_NAMESPACE, 'svg')
-    svg.setAttributeNS(null, 'id', id)
+    svg.setAttributeNS(null, 'id', title)
     svg.setAttributeNS(null, 'width', width)
     svg.setAttributeNS(null, 'height', height)
     svg.setAttributeNS(null, 'style', `background-color:${bg}`)
