@@ -5,7 +5,7 @@ import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
 
 // const seed = randomInteger(0xFFFFFFFF);
-const seed = 1;
+const seed = 0xFAFA00;
 
 const config = {
     title: 'Test',
@@ -19,11 +19,6 @@ const config = {
 }
 
 const prng = new LCG(config.seed);
-let test = ["help", "me", "how"]
-for (let i = 0; i < 100; i++) {
-    console.log(randomElement(test, prng.next()));
-}
-
 document.title = `${config.title} ${config.seed.toString(16)}`;
 
 const svg = createSVG({
@@ -37,6 +32,19 @@ const sketch = new Sketch(config);
 const width = sketch.config.width;
 const height = sketch.config.height;
 
+for (let i = 0; i < 100; i++) {
+    const a = new Vector(
+        randomInteger(0, width, prng.next()),
+        randomInteger(0, height, prng.next()),
+    )
+    const b = new Vector(
+        randomInteger(0, width, prng.next()),
+        randomInteger(0, height, prng.next()),
+    )
+
+    const line = new Line(a, b);
+    sketch.lines.push(line)
+}
 
 sketch.draw(svg);
 initializeEventHandlers(svg, filename);
