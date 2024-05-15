@@ -1,6 +1,7 @@
 import { createSVG, drawLine, drawPoint, downloadSVG } from "./renderer.js";
 import { Vector, Line } from "./geometry.js";
 import { lerp, randomInteger } from "./utils.js";
+import { initializeEventHandlers } from "./eventHandlers.js";
 
 const title = 'Testing';
 const width = 500;
@@ -40,11 +41,7 @@ for (let line of sketch.lines) {
     drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, fg)
 }
 
-onkeydown = (event) => {
-    if (event.code === 'KeyS') {
-        downloadSVG(svg, filename());
-    }
-}
+initializeEventHandlers(svg, filename);
 
 function filename() {
     return `${title}_${width}x${height}`
