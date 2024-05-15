@@ -1,4 +1,4 @@
-import { createSVG, drawPoint } from "./renderer.js";
+import { createSVG } from "./renderer.js";
 import { Vector, Line, intersectionLineLine } from "./geometry.js";
 import { lerp, randomInteger, randomElement } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
