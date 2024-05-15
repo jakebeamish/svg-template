@@ -14,6 +14,8 @@ const config = {
     showPoints: false
 }
 
+document.title = config.title;
+
 const svg = createSVG({
     width: config.width,
     height: config.height,
