@@ -1,4 +1,4 @@
-import { createSVG, drawLine, drawPoint } from "./renderer.js";
+import { createSVG, drawPoint } from "./renderer.js";
 import { Vector, Line, intersectionLineLine } from "./geometry.js";
 import { lerp, randomInteger, randomElement } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
@@ -40,19 +40,7 @@ for (let i = 0; i < 10000; i++) {
     if (valid) { sketch.lines.push(l) };
 }
 
-sketch.removeDuplicateLines();
-
-if (config.showLines) {
-    for (let line of sketch.lines) {
-        drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, config.fg)
-    }
-}
-
-if (config.showPoints) {
-    for (let point of sketch.points) {
-        drawPoint(svg, point.x, point.y)
-    }
-}
+sketch.draw(svg);
 
 initializeEventHandlers(svg, filename);
 
