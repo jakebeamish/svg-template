@@ -7,9 +7,11 @@ import { initializeEventHandlers } from "./eventHandlers.js";
 const config = {
     title: 'Untitled',
     width: '500',
-    height: '500',
+    height: '1000',
     fg: 'black',
-    bg: 'snow'
+    bg: 'snow',
+    showLines: true,
+    showPoints: false
 }
 
 const svg = createSVG({
@@ -24,13 +26,10 @@ const sketch = {
     lines: []
 }
 
-for (let point of sketch.points) {
-    drawPoint(svg, point.x, point.y)
-}
 
 for (let i = 0; i < 100; i++) {
     // let x = Math.random() * width;
-    let x = (randomInteger(0, 10)+0.5) * config.width/10;
+    let x = (randomInteger(0, 10) + 0.5) * config.width / 10;
     sketch.lines.push(new Line({ x: x, y: 0 }, { x: x, y: config.height }))
 }
 
@@ -41,9 +40,16 @@ let uniqueArray = Array.from(uniqueSet).map(JSON.parse)
 sketch.lines = uniqueArray;
 
 
+if (config.showLines) {
+    for (let line of sketch.lines) {
+        drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, config.fg)
+    }
+}
 
-for (let line of sketch.lines) {
-    drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, config.fg)
+if (config.showPoints) {
+    for (let point of sketch.points) {
+        drawPoint(svg, point.x, point.y)
+    }    
 }
 
 initializeEventHandlers(svg, filename);
