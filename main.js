@@ -1,3 +1,8 @@
+/**
+ * @file index.js is the root file for the example.
+ * It kicks things off.
+ */
+
 import { createSVG } from "./renderer.js";
 import { Vector, Line, intersectionLineLine } from "./geometry.js";
 import { LCG, lerp, randomInteger, randomElement } from "./utils.js";
@@ -5,8 +10,19 @@ import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
 
 // Use Math.random() to generate a 32-bit unsigned int seed
+
+/**
+ * Sets the seed to a random integer between 0 and 0xFFFFFFFF
+ * @constant
+ * @type {number}
+ */
 const seed = randomInteger(0xFFFFFFFF);
 
+/**
+ * @constant
+ * @type {Object}
+ * @default
+ */
 const config = {
     title: '',
     width: 500,

@@ -1,17 +1,39 @@
+/**
+ * @class
+ */
 export class Vector {
+    /**
+     * 
+     * @param {number} x - The x component of the vector.
+     * @param {*} y - The y component of the vector.
+     */
     constructor(x, y) {
         this.x = x;
         this.y = y
     }
 }
 
+/**
+ * @class
+ */
 export class Line {
+    /**
+     *
+     * @param {Vector} a - The startpoint.
+     * @param {Vector} b - The endpoint.
+     */
     constructor(a, b) {
         this.a = a;
         this.b = b
     }
 }
 
+/**
+ * 
+ * @param {Line} line1 
+ * @param {Line} line2 
+ * @returns {(boolean|Array)} - False if lines don't intersect, otherwise returns the intersection point [x,y]
+ */
 export function intersectionLineLine(line1, line2) {
     const x1 = line1.a.x;
     const y1 = line1.a.y;

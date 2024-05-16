@@ -2,6 +2,10 @@ export function sinFract(x, y, a, b, m) {
     return fract(Math.sin(x * a + y * b) * m)
 }
 
+/**
+ * @param {number} x 
+ * @returns The fractional part of x.
+ */
 export function fract(x) {
     return x - Math.floor(x);
 }
@@ -10,6 +14,13 @@ export function lerp(a, b, t) {
     return (1 - t) * a + t * b;
 }
 
+/**
+ * 
+ * @param {number} min - The minimum value (inclusive)
+ * @param {number} max - The maximum value (exclusive)
+ * @param {function} [randomfn=Math.random()] - The random number function to use.
+ * @returns {number} - A random integer between min and max
+ */
 export function randomInteger(min, max, randomfn = Math.random()) {
     if (max === undefined) {
         max = min;

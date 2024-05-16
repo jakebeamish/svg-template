@@ -1,3 +1,6 @@
+/**
+ * @file 
+ */
 
 import { drawLine } from "./renderer.js";
 

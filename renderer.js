@@ -1,5 +1,15 @@
+/**
+ * @constant
+ * @type {string}
+ * @default
+ */
 const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
 
+/**
+ * xxx
+ * @param {*} param0 
+ * @returns svg
+ */
 export function createSVG({
     width = 100,
     height = 100,
@@ -16,6 +26,17 @@ export function createSVG({
     return svg;
 }
 
+/**
+ * Appends a line to an SVG element.
+ * @param {Object} svg - A reference to the SVG element.
+ * @param {number} x1 - The x coordinate of the startpoint.
+ * @param {number} y1 - The y coordinate of the startpoint.
+ * @param {number} x2 - The x coordinate of the endpoint.
+ * @param {number} y2 - The y coordinate of the endpoint.
+ * @param {string} [stroke='black'] - The colour of the line.
+ * @param {number} [strokeWidth=1] - The line thickness.
+ * @param {string} [linecap='square'] - The linecap can be 'square', 'round' or '..' 
+ */
 export function drawLine(svg, x1, y1, x2, y2,
     stroke = 'black',
     strokeWidth = 1,
@@ -31,9 +52,18 @@ export function drawLine(svg, x1, y1, x2, y2,
     svg.appendChild(line);
 }
 
+/**
+ * Appends a point to an SVG element.
+ * @param {Object} svg - A reference to the SVG element.
+ * @param {number} x1 - The x coordinate of the point.
+ * @param {number} y1 - The y coordinate of the point.
+ * @param {number} [stroke='black'] - The colour of the point. 
+ * @param {number} [strokeWidth=1] - The line thickness.
+ * @param {string} [linecap='round'] - The linecap can be 'square', 'round' or '..' 
+ */
 export function drawPoint(svg, x1, y1, stroke = 'black',
-strokeWidth = 1,
-linecap = 'round') {
+    strokeWidth = 1,
+    linecap = 'round') {
     drawLine(svg, x1, y1, x1, y1, stroke, strokeWidth, linecap);
 }
 
