@@ -1,19 +1,34 @@
 
 import { drawLine } from "./renderer.js";
 
+/** Class representing a sketch. */
 export class Sketch {
-    constructor(config) {
+    /**
+     * 
+     * @param {config} config - The config object.
+     * @param {Array} [lines=[]] - An array of lines.
+     * @param {Array} [points=[]] - An array of points.
+     */
+    constructor(config, points = [], lines = []) {
         this.config = config;
-        this.points = [];
-        this.lines = [];
+        this.points = points;
+        this.lines = lines;
     }
 
+    /**
+     * Adds the lines and points of the sketch to an SVG document,
+     * after first removing duplicate lines.
+     * @param {*} svg - The SVG object reference.
+     */
     draw(svg) {
         this.removeDuplicateLines();
         this.drawLines(svg);
         this.drawPoints(svg);
     }
 
+    /**
+     * Removes duplicate lines from the sketch.
+     */
     removeDuplicateLines() {
         let jsonObject = this.lines.map(JSON.stringify);
         let uniqueSet = new Set(jsonObject);
@@ -21,6 +36,10 @@ export class Sketch {
         this.lines = uniqueArray;
     }
 
+    /**
+     * Adds the lines of the sketch to an SVG document.
+     * @param {*} svg 
+     */
     drawLines(svg) {
         if (this.config.showLines) {
             for (let line of this.lines) {
@@ -29,6 +48,10 @@ export class Sketch {
         }
     }
 
+    /**
+     * Adds the points of the sketch to an SVG document.
+     * @param {*} svg 
+     */
     drawPoints(svg) {
         if (this.config.showPoints) {
             for (let point of this.points) {
