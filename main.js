@@ -38,19 +38,16 @@ const { width, height } = sketch.config;
 // Put drawing code here
 // Create Lines and Points and push them to sketch
 
-for (let i = 0; i < 100; i++) {
-    const a = new Vector(
-        randomInteger(0, width, prng.next()),
-        randomInteger(0, height, prng.next()),
-    )
-    const b = new Vector(
-        randomInteger(0, width, prng.next()),
-        randomInteger(0, height, prng.next()),
-    )
 
-    const line = new Line(a, b);
-    sketch.lines.push(line)
-}
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////
 
