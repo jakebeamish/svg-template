@@ -8,7 +8,7 @@ import { Sketch } from "./sketch.js";
 const seed = randomInteger(0xFFFFFFFF);
 
 const config = {
-    title: '',
+    title: 'random-seeded-lines',
     width: 500,
     height: 500,
     fg: 'snow',
@@ -49,6 +49,7 @@ for (let i = 0; i < 100; i++) {
     )
 
     const line = new Line(a, b);
+
     sketch.lines.push(line)
 }
 
