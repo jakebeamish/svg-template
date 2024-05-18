@@ -5,7 +5,7 @@ export class Vector {
     /**
      * 
      * @param {number} x - The x component of the vector.
-     * @param {*} y - The y component of the vector.
+     * @param {number} y - The y component of the vector.
      */
     constructor(x, y) {
         this.x = x;
@@ -19,8 +19,8 @@ export class Vector {
 export class Line {
     /**
      *
-     * @param {Vector} a - The startpoint.
-     * @param {Vector} b - The endpoint.
+     * @param {Vector} a - The startpoint of the line.
+     * @param {Vector} b - The endpoint of the line.
      */
     constructor(a, b) {
         this.a = a;
