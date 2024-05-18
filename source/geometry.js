@@ -11,6 +11,23 @@ export class Vector {
         this.x = x;
         this.y = y
     }
+
+    findNearestPoint(points) {
+        let record = Infinity;
+        let closest;
+    
+        for (let other of points) {
+            if (this !== other) {
+                let current = new Line(this, other);
+                if (current.distanceSquared() < record) {
+                    record = current.distanceSquared();
+                    closest = current;
+                }
+            }
+        }
+
+        return closest;
+    }
 }
 
 /**
@@ -24,7 +41,23 @@ export class Line {
      */
     constructor(a, b) {
         this.a = a;
-        this.b = b
+        this.b = b;
+    }
+
+    /**
+     * 
+     * @returns {Number} The length of the line as a Euclidean distance.
+     */
+    distance() {
+        return Math.sqrt((this.b.x - this.a.x)**2 + (this.b.y - this.a.y)**2);
+    }
+
+    /**
+     * 
+     * @returns {Number} The length of the line as a squared Euclidean distance. Faster than {@link Line#distance} because it doesn't use Math.sqrt()
+     */
+    distanceSquared() {
+        return (this.b.x - this.a.x)**2 + (this.b.y - this.a.y)**2;
     }
 }
 

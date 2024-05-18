@@ -2,15 +2,16 @@
  * @file 
  */
 
-import { drawLine } from "./renderer.js";
+import { drawLine, drawPoint } from "./renderer.js";
 
 /** Class representing a sketch. */
 export class Sketch {
     /**
+     * A helper class for storing attributes of a sketch, including config options.
      * 
      * @param {config} config - The config object.
-     * @param {Array} [lines=[]] - An array of lines.
-     * @param {Array} [points=[]] - An array of points.
+     * @param {Array.<Line>} [lines=[]] - An array of lines.
+     * @param {Array.<Vector>} [points=[]] - An array of points.
      */
     constructor(config, points = [], lines = []) {
         this.config = config;
