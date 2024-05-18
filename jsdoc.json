@@ -1,9 +1,8 @@
 {
     "source": {
-        "include": [ "src/" ]
-    }
+        "include": [ "source/" ]
+    },
     "opts": {
         "destination": "docs/"
-        // "template": "node_modules/docdash"
     }
 }
