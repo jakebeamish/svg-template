@@ -24,7 +24,7 @@ export class Sketch {
     }
 
     /**
-     * Adds the lines and points of the sketch to an SVG document,
+     * Adds the [Lines]{@link Line} and points of the {@link Sketch} to an SVG document,
      * after first removing duplicate lines.
      * @param {*} svg - The SVG object reference.
      */
@@ -35,7 +35,7 @@ export class Sketch {
     }
 
     /**
-     * Removes duplicate lines from the sketch.
+     * Removes duplicate [Lines]{@link Line} from the sketch.
      */
     removeDuplicateLines() {
         let jsonObject = this.lines.map(JSON.stringify);
@@ -45,7 +45,7 @@ export class Sketch {
     }
 
     /**
-     * Adds the lines of the sketch to an SVG document.
+     * Adds the [Lines]{@link Line} of the sketch to an SVG document.
      * @param {*} svg 
      */
     drawLines(svg) {
