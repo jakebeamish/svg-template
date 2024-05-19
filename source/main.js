@@ -18,6 +18,7 @@ import { colours } from "./colours.js";
  * @type {number}
  */
 const seed = randomInteger(0xFFFFFFFF);
+const prng = new LCG(seed);
 
 /**
  * @constant
@@ -28,14 +29,12 @@ export const config = {
     title: '',
     width: 500,
     height: 700,
-    fg: randomElement(colours.dark),
-    bg: randomElement(colours.light),
+    fg: randomElement(colours.dark, prng.next()),
+    bg: randomElement(colours.light, prng.next()),
     showLines: true,
     showPoints: true,
     seed: seed
 }
-
-const prng = new LCG(config.seed);
 
 document.title = `${config.title} ${config.seed.toString(16)}`;
 
