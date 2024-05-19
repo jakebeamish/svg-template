@@ -9,32 +9,30 @@ import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
 import { colours } from "./colours.js";
 
-// Use Math.random() to generate a 32-bit unsigned int seed
-
-/**
- * Sets the seed to a random integer between 0 and 0xFFFFFFFF
- * @constant
- * @type {number}
- */
 const seed = randomInteger(0xFFFFFFFF);
 const prng = new LCG(seed);
 
-/**
- * @constant
- * @type {Object}
- * @default
- */
 export const config = {
     title: '',
-    width: 500,
-    height: 700,
-    fg: randomElement(colours.dark, prng.next()),
-    bg: randomElement(colours.light, prng.next()),
-    strokeWidth: 1,
+    width: 1400,
+    height: 1000,
+    bg: randomElement(colours.dark, prng.next()),
+    fg: randomElement(colours.light, prng.next()),
+    strokeWidth: 2,
     linecap: 'round',
     showLines: true,
     showPoints: true,
-    seed: seed
+    seed: seed,
+    gridWidth: 3,
+    gridHeight: 3,
+    numberOfPoints: randomInteger(5, 20, prng.next()),
+    numberOfLines: randomInteger(10, 25, prng.next())
+}
+
+if (prng.next() < 0.5) {
+    const swap = config.bg;
+    config.bg = config.fg;
+    config.fg = swap;
 }
 
 document.title = `${config.title} ${config.seed.toString(16)}`;
@@ -51,12 +49,18 @@ const { width, height } = sketch.config;
 // Create Lines and Points and push them to sketch
 
 
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < config.numberOfPoints; i++) {
     let p = new Vector(
-        (randomInteger(0, 3, prng.next())+0.5) * width/3,
-        (randomInteger(0, 3, prng.next())+0.5) * height/3
+        (randomInteger(0, config.gridWidth, prng.next())+0.5) * width/config.gridWidth,
+        (randomInteger(0, config.gridHeight, prng.next())+0.5) * height/config.gridHeight
     );
     sketch.points.push(p)
+}
+
+let focalPoint = randomElement(sketch.points, prng.next());
+
+for (let p of sketch.points) {
+    sketch.lines.push(new Line(focalPoint, p))
 }
 
 for (let i = 0; i < sketch.points.length - 1; i++) {
@@ -67,14 +71,15 @@ for (let i = 0; i < sketch.points.length - 1; i++) {
 }
 
 let pLine = randomElement(sketch.lines, prng.next());
+let qLine = randomElement(sketch.lines, prng.next());
 
-for (let i = 0; i <= 30; i++) {
-    let a = new Vector(lerp(pLine.a.x, pLine.b.x, i/30), lerp(pLine.a.y, pLine.b.y, i/30));
-    let b = new Vector(lerp(pLine.a.x, pLine.b.x, i/30),0)
+for (let i = 0; i <= 24; i++) {
+    let a = new Vector(lerp(pLine.a.x, pLine.b.x, i/24), lerp(pLine.a.y, pLine.b.y, i/24));
+    let b = new Vector(lerp(qLine.a.x, qLine.b.x, i/24), lerp(qLine.a.y, qLine.b.y, i/24))
     sketch.lines.push(new Line(a, b))
 }
 
-console.table(sketch)
+// console.table(sketch)
 //////////////////////////////////////////////////////
 
 sketch.draw(svg);
