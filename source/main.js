@@ -3,7 +3,6 @@
  * It kicks things off.
  */
 
-import { createSVG } from "./renderer.js";
 import { Vector, Line, intersectionLineLine } from "./geometry.js";
 import { LCG, lerp, randomInteger, randomElement, filename } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
@@ -40,14 +39,9 @@ export const config = {
 
 document.title = `${config.title} ${config.seed.toString(16)}`;
 
-const svg = createSVG({
-    width: config.width,
-    height: config.height,
-    bg: config.bg,
-    title: config.title
-})
-
 const sketch = new Sketch(config);
+const svg = sketch.createSVG();
+
 const { width, height } = sketch.config;
 
 ///////////////////////////////////////////////////////

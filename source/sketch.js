@@ -2,7 +2,7 @@
  * @file 
  */
 
-import { drawLine, drawPoint } from "./renderer.js";
+import { createSVG, drawLine, drawPoint } from "./renderer.js";
 
 /** Class representing a sketch. */
 export class Sketch {
@@ -17,6 +17,10 @@ export class Sketch {
         this.config = config;
         this.points = points;
         this.lines = lines;
+    }
+
+    createSVG() {
+        return createSVG(this.config);
     }
 
     /**
