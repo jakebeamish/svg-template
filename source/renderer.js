@@ -7,7 +7,7 @@ const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
 
 /**
  * xxx
- * @param {*} param0 
+ * @param {config} config 
  * @returns svg
  */
 export function createSVG({
