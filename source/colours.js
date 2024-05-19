@@ -5,7 +5,7 @@ export const colours = {
         "seashell",
         "oldlace",
         "ghostwhite",
-        "bisque"
+        // "bisque"
     ],
     dark: [
         "midnightblue",
