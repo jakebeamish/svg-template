@@ -54,20 +54,6 @@ const { width, height } = sketch.config;
 // Put drawing code here
 // Create Lines and Points and push them to sketch
 
-for (let i = 0; i < 1000; i++) {
-    let v = new Vector(prng.next() * width, prng.next() * height);
-    sketch.points.push(v)
-}
-
-for (let p of sketch.points) {
-    let closest = p.findNearestPoint(sketch.points)
-    sketch.lines.push(closest)
-}
-
-
-
-
-
 
 
 
