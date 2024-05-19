@@ -2,6 +2,11 @@ export function sinFract(x, y, a, b, m) {
     return fract(Math.sin(x * a + y * b) * m)
 }
 
+
+export function filename(config) {
+    return `${config.title}_${config.seed.toString(16)}_${config.width}x${config.height}`
+}
+
 /**
  * @param {number} x 
  * @returns The fractional part of x.
