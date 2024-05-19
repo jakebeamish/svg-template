@@ -47,7 +47,7 @@ export class Sketch {
     drawLines(svg) {
         if (this.config.showLines) {
             for (let line of this.lines) {
-                drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, this.config.fg)
+                drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, this.config.fg, this.config.strokeWidth, this.config.linecap)
             }
         }
     }
