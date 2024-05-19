@@ -8,6 +8,7 @@ import { Vector, Line, intersectionLineLine } from "./geometry.js";
 import { LCG, lerp, randomInteger, randomElement, filename } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
+import { colours } from "./colours.js";
 
 // Use Math.random() to generate a 32-bit unsigned int seed
 
@@ -26,9 +27,9 @@ const seed = randomInteger(0xFFFFFFFF);
 export const config = {
     title: '',
     width: 500,
-    height: 500,
-    fg: 'black',
-    bg: 'white',
+    height: 700,
+    fg: randomElement(colours.dark),
+    bg: randomElement(colours.light),
     showLines: true,
     showPoints: true,
     seed: seed
@@ -57,8 +58,8 @@ const { width, height } = sketch.config;
 
 for (let i = 0; i < 15; i++) {
     let p = new Vector(
-        (Math.floor(Math.random() * width/100)+0.5) * 100,
-        (Math.floor(Math.random() * height/100)+0.5) * 100
+        (randomInteger(0, 3, prng.next())+0.5) * width/3,
+        (randomInteger(0, 3, prng.next())+0.5) * height/3
     );
     sketch.points.push(p)
 }
@@ -71,7 +72,7 @@ for (let i = 0; i < sketch.points.length - 1; i++) {
 }
 
 
-
+console.table(sketch)
 //////////////////////////////////////////////////////
 
 sketch.draw(svg);
