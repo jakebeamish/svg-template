@@ -55,6 +55,21 @@ const { width, height } = sketch.config;
 // Create Lines and Points and push them to sketch
 
 
+for (let i = 0; i < 15; i++) {
+    let p = new Vector(
+        (Math.floor(Math.random() * width/100)+0.5) * 100,
+        (Math.floor(Math.random() * height/100)+0.5) * 100
+    );
+    sketch.points.push(p)
+}
+
+for (let i = 0; i < sketch.points.length - 1; i++) {
+    const a = sketch.points[i];
+    const b = sketch.points[(i+1)%sketch.points.length]
+    let line = new Line(a, b);
+    sketch.lines.push(line);
+}
+
 
 
 //////////////////////////////////////////////////////
