@@ -31,6 +31,8 @@ export const config = {
     height: 700,
     fg: randomElement(colours.dark, prng.next()),
     bg: randomElement(colours.light, prng.next()),
+    strokeWidth: 1,
+    linecap: 'round',
     showLines: true,
     showPoints: true,
     seed: seed
@@ -70,6 +72,13 @@ for (let i = 0; i < sketch.points.length - 1; i++) {
     sketch.lines.push(line);
 }
 
+let pLine = randomElement(sketch.lines, prng.next());
+
+for (let i = 0; i <= 30; i++) {
+    let a = new Vector(lerp(pLine.a.x, pLine.b.x, i/30), lerp(pLine.a.y, pLine.b.y, i/30));
+    let b = new Vector(lerp(pLine.a.x, pLine.b.x, i/30),0)
+    sketch.lines.push(new Line(a, b))
+}
 
 console.table(sketch)
 //////////////////////////////////////////////////////
