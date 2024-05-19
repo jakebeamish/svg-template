@@ -5,7 +5,7 @@
 
 import { createSVG } from "./renderer.js";
 import { Vector, Line, intersectionLineLine } from "./geometry.js";
-import { LCG, lerp, randomInteger, randomElement } from "./utils.js";
+import { LCG, lerp, randomInteger, randomElement, filename } from "./utils.js";
 import { initializeEventHandlers } from "./eventHandlers.js";
 import { Sketch } from "./sketch.js";
 
@@ -23,7 +23,7 @@ const seed = randomInteger(0xFFFFFFFF);
  * @type {Object}
  * @default
  */
-const config = {
+export const config = {
     title: '',
     width: 500,
     height: 500,
@@ -75,7 +75,3 @@ for (let p of sketch.points) {
 
 sketch.draw(svg);
 initializeEventHandlers(svg, filename);
-
-function filename() {
-    return `${config.title}_${config.seed.toString(16)}_${config.width}x${config.height}`
-}
