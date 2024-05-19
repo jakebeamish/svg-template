@@ -35,7 +35,7 @@ export function createSVG({
  * @param {number} y2 - The y coordinate of the endpoint.
  * @param {string} [stroke='black'] - The colour of the line.
  * @param {number} [strokeWidth=1] - The line thickness.
- * @param {string} [linecap='square'] - The linecap can be 'square', 'round' or '..' 
+ * @param {string} [linecap='round'] - The linecap can be 'square', 'round' or '..' 
  */
 export function drawLine(svg, x1, y1, x2, y2,
     stroke = 'black',
