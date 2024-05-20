@@ -1,11 +1,11 @@
-/**
- * @class
- */
+
 export class Vector {
     /**
      * 
      * @param {number} x - The x component of the vector.
      * @param {number} y - The y component of the vector.
+     * @param {number} z - The z component of the vector.
+     * 
      */
     constructor(x = 0, y = 0, z = 0) {
         this.x = x;
