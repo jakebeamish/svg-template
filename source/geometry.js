@@ -7,9 +7,10 @@ export class Vector {
      * @param {number} x - The x component of the vector.
      * @param {number} y - The y component of the vector.
      */
-    constructor(x, y) {
+    constructor(x = 0, y = 0, z = 0) {
         this.x = x;
         this.y = y;
+        this.z = z;
     }
 
     findNearestPoint(points) {
