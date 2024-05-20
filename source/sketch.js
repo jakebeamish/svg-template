@@ -3,7 +3,6 @@
  */
 
 import { createSVG, drawLine, drawPoint } from "./renderer.js";
-import { Line, Vector } from "./geometry.js";
 
 /** Class representing a sketch. */
 export class Sketch {
@@ -18,21 +17,18 @@ export class Sketch {
         this.config = config;
         this.points = points;
         this.lines = lines;
-    }
-
-    createSVG() {
-        return createSVG(this.config);
+        this.svg = createSVG(this.config);
     }
 
     /**
-     * Adds {@link Line} and point objects of the {@link Sketch} to an SVG document,
+     * Adds the [Lines]{@link Line} and points of the {@link Sketch} to an SVG document,
      * after first removing duplicate lines.
      * @param {*} svg - The SVG object reference.
      */
-    draw(svg) {
+    draw() {
         this.removeDuplicateLines();
-        this.drawLines(svg);
-        this.drawPoints(svg);
+        this.drawLines(this.svg);
+        this.drawPoints(this.svg);
     }
 
     /**

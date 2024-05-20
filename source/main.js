@@ -38,7 +38,6 @@ if (prng.next() < 0.5) {
 document.title = `${config.title} ${config.seed.toString(16)}`;
 
 const sketch = new Sketch(config);
-const svg = sketch.createSVG();
 
 const { width, height } = sketch.config;
 
@@ -82,5 +81,5 @@ for (let i = 0; i <= 24; i++) {
 // console.table(sketch)
 //////////////////////////////////////////////////////
 
-sketch.draw(svg);
-initializeEventHandlers(svg, filename);
+sketch.draw();
+initializeEventHandlers(sketch.svg, filename);
