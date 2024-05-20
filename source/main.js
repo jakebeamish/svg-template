@@ -13,7 +13,7 @@ const seed = randomInteger(0xFFFFFFFF);
 const prng = new LCG(seed);
 
 export const config = {
-    title: '',
+    title: 'Lines on a grid',
     width: 1400,
     height: 1000,
     bg: randomElement(colours.dark, prng.next()),
