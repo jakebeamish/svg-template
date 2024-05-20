@@ -6,7 +6,7 @@
 const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
 
 /**
- * xxx
+ * Creates an SVG element according to the config, and appends it to the document body.
  * @param {config} config 
  * @returns svg
  */
@@ -67,6 +67,11 @@ export function drawPoint(svg, x1, y1, stroke = 'black',
     drawLine(svg, x1, y1, x1, y1, stroke, strokeWidth, linecap);
 }
 
+/**
+ * 
+ * @param {svg} svgElement - The SVG element to download.
+ * @param {string} filename - The filename to use.
+ */
 export function downloadSVG(svgElement, filename) {
     var svgData = new XMLSerializer().serializeToString(svgElement);
     var blob = new Blob([svgData], { type: "image/svg+xml" });
