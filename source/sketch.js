@@ -63,7 +63,7 @@ export class Sketch {
     drawPoints(svg) {
         if (this.config.showPoints) {
             for (let point of this.points) {
-                drawPoint(svg, point.x, point.y, this.config.fg)
+                drawPoint(svg, point.x, point.y, this.config.fg, this.config.strokeWidth)
             }
         }
     }
