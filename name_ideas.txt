@@ -1,5 +1,22 @@
-linecraft
-inkline
-makeplot
-penplot
-plottertool
+
+
+Some ideas after talking with Ruth (2024-05-20)
+- Something animally
+- Something to do with spines/quills/pens - a 'pine' is a thorn
+- Pen nibs have tines
+- Porcuplot
+- Something to do with squids
+- Complot
+- Subplot
+- Splotch
+- Blot?
+- Penguin
+
+---
+- linecraft
+- inkline
+- makeplot
+- penplot
+- plottertool
+
+
