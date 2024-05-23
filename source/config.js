@@ -1,6 +1,13 @@
 import { SVG_NAMESPACE } from "./constants.js";
 
+
 export class Config {
+/**
+ * 
+ * @param { object } options - The configuration options for the Config object.
+ * @param { number } [options.width=100]
+ * @param { number } [options.height=100]
+ */
     constructor({
         title = 'Untitled',
         width = 100,
