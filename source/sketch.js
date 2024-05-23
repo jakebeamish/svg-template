@@ -15,7 +15,7 @@ export class Sketch {
      * @param {Array.<Vector>} [points=[]] - An array of points.
      */
     constructor(config, points = [], lines = []) {
-        
+
         if (!(config instanceof Config)) {
             config = new Config();
         }
@@ -54,7 +54,7 @@ export class Sketch {
     drawLines(svg) {
         if (this.config.showLines) {
             for (let line of this.lines) {
-                drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, this.config.fg, this.config.strokeWidth, this.config.linecap)
+                drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, this.config.foregroundColour, this.config.strokeWidth, this.config.linecap)
             }
         }
     }
@@ -66,7 +66,7 @@ export class Sketch {
     drawPoints(svg) {
         if (this.config.showPoints) {
             for (let point of this.points) {
-                drawPoint(svg, point.x, point.y, this.config.fg)
+                drawPoint(svg, point.x, point.y, this.config.foregroundColour, this.config.strokeWidth)
             }
         }
     }
