@@ -28,9 +28,11 @@ export function createSVG(config) {
  * @param {string} [linecap='round'] - The linecap can be 'square', 'round' or '..' 
  */
 export function drawLine(svg, x1, y1, x2, y2,
-    stroke = 'black',
-    strokeWidth = 1,
-    linecap = 'square') {
+    {
+        stroke = 'black',
+        strokeWidth = 1,
+        linecap = 'square'
+    }) {
     const line = document.createElementNS(SVG_NAMESPACE, 'line')
     line.setAttributeNS(null, 'x1', x1);
     line.setAttributeNS(null, 'y1', y1);

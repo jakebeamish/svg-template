@@ -54,7 +54,16 @@ export class Sketch {
     drawLines(svg) {
         if (this.config.showLines) {
             for (let line of this.lines) {
-                drawLine(svg, line.a.x, line.a.y, line.b.x, line.b.y, this.config.foregroundColour, this.config.strokeWidth, this.config.linecap)
+                drawLine(svg,
+                    line.a.x,
+                    line.a.y,
+                    line.b.x,
+                    line.b.y,
+                    {
+                    stroke: this.config.foregroundColour,
+                    strokeWidth: this.config.strokeWidth,
+                    linecap: this.config.linecap
+                })
             }
         }
     }
