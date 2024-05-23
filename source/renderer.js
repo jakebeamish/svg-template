@@ -1,22 +1,17 @@
-const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
+import { SVG_NAMESPACE } from "./constants.js"
 
 /**
  * Creates an SVG element according to the config, and appends it to the document body.
- * @param {config} config 
+ * @param { Config } config 
  * @returns svg
  */
-export function createSVG({
-    width = 100,
-    height = 100,
-    bg = '#FFFFFA',
-    title = 'mySVG'
-}) {
-    const svg = document.createElementNS(SVG_NAMESPACE, 'svg')
-    svg.setAttributeNS(null, 'id', title)
-    svg.setAttributeNS(null, 'width', width)
-    svg.setAttributeNS(null, 'height', height)
-    svg.setAttributeNS(null, 'style', `background-color:${bg}`)
-    svg.setAttributeNS(null, 'viewBox', `0 0 ${width} ${height}`)
+export function createSVG(config) {
+    const svg = document.createElementNS(config.ns, 'svg')
+    svg.setAttributeNS(config.ns, 'id', config.title)
+    svg.setAttributeNS(config.ns, 'width', config.width)
+    svg.setAttributeNS(config.ns, 'height', config.height)
+    svg.setAttributeNS(null, 'style', `background-color:${config.backgroundColour}`)
+    svg.setAttributeNS(null, 'viewBox', `0 0 ${config.width} ${config.height}`)
     document.body.appendChild(svg);
     return svg;
 }
