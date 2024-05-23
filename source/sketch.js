@@ -3,17 +3,23 @@
  */
 
 import { createSVG, drawLine, drawPoint } from "./renderer.js";
+import { Config } from "./config.js"
 
 /** Class representing a sketch. */
 export class Sketch {
     /**
      * A helper class for storing attributes of a sketch, including config options.
      * 
-     * @param {config} config - The config object.
+     * @param {Config} config - The config object.
      * @param {Array.<Line>} [lines=[]] - An array of lines.
      * @param {Array.<Vector>} [points=[]] - An array of points.
      */
     constructor(config, points = [], lines = []) {
+        
+        if (!(config instanceof Config)) {
+            config = new Config();
+        }
+
         this.config = config;
         this.points = points;
         this.lines = lines;
