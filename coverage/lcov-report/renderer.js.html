@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">60.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/28</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>17/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">25% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">50% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">60.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/28</span>
+                <span class='fraction'>17/28</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -141,7 +141,9 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,14 +151,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,15 +176,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,19 +252,21 @@ export function createSVG(config) {
  * @param {number} [strokeWidth=1] - The line thickness.
  * @param {string} [linecap='round'] - The linecap can be 'square', 'round' or '..' 
  */
-export function <span class="fstat-no" title="function not covered" >drawLine(</span>svg, x1, y1, x2, y2,
-    stroke = <span class="branch-0 cbranch-no" title="branch not covered" >'black',</span>
-    strokeWidth = <span class="branch-0 cbranch-no" title="branch not covered" >1,</span>
-    linecap = <span class="branch-0 cbranch-no" title="branch not covered" >'square')</span> {
-    const line = <span class="cstat-no" title="statement not covered" >document.createElementNS(SVG_NAMESPACE, 'line')</span>
-<span class="cstat-no" title="statement not covered" >    line.setAttributeNS(null, 'x1', x1);</span>
-<span class="cstat-no" title="statement not covered" >    line.setAttributeNS(null, 'y1', y1);</span>
-<span class="cstat-no" title="statement not covered" >    line.setAttributeNS(null, 'x2', x2);</span>
-<span class="cstat-no" title="statement not covered" >    line.setAttributeNS(null, 'y2', y2);</span>
-<span class="cstat-no" title="statement not covered" >    line.setAttributeNS(null, 'stroke', stroke);</span>
-<span class="cstat-no" title="statement not covered" >    line.setAttributeNS(null, 'stroke-linecap', linecap)</span>
-<span class="cstat-no" title="statement not covered" >    line.setAttributeNS(null, 'stroke-width', strokeWidth);</span>
-<span class="cstat-no" title="statement not covered" >    svg.appendChild(line);</span>
+export function drawLine(svg, x1, y1, x2, y2,
+    {
+        stroke = <span class="branch-0 cbranch-no" title="branch not covered" >'black',</span>
+        strokeWidth = 1,
+        linecap = 'square'
+    }) {
+    const line = document.createElementNS(SVG_NAMESPACE, 'line')
+    line.setAttributeNS(null, 'x1', x1);
+    line.setAttributeNS(null, 'y1', y1);
+    line.setAttributeNS(null, 'x2', x2);
+    line.setAttributeNS(null, 'y2', y2);
+    line.setAttributeNS(null, 'stroke', stroke);
+    line.setAttributeNS(null, 'stroke-linecap', linecap)
+    line.setAttributeNS(null, 'stroke-width', strokeWidth);
+    svg.appendChild(line);
 }
 &nbsp;
 /**
@@ -304,7 +310,7 @@ export function <span class="fstat-no" title="function not covered" >downloadSVG
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-05-23T13:04:05.508Z
+                at 2024-05-23T14:32:27.604Z
             </div>
         <script src="prettify.js"></script>
         <script>
