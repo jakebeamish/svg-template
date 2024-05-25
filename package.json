@@ -2,7 +2,7 @@
   "name": "svg-template",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "source/main.js",
   "scripts": {
     "test": "jest --verbose --coverage",
     "generate-docs": "jsdoc --configure jsdoc.json --verbose"

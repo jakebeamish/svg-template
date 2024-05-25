@@ -1,82 +1,38 @@
-/**
- * @file 
- */
+export const createSketch = ({
+    width = 100,
+    height = 100,
+    backgroundColor = 'grey',
+    namespace = "http://www.w3.org/2000/svg",
+    elements = []
+}={}) => {
+    const sketch = {
+        width, height, backgroundColor, elements, namespace
+    }
 
-import { createSVG, drawLine, drawPoint } from "./renderer.js";
-import { Config } from "./config.js"
-
-/** Class representing a sketch. */
-export class Sketch {
-    /**
-     * A helper class for storing attributes of a sketch, including config options.
-     * 
-     * @param {Config} config - The config object.
-     * @param {Array.<Line>} [lines=[]] - An array of lines.
-     * @param {Array.<Vector>} [points=[]] - An array of points.
-     */
-    constructor(config, points = [], lines = []) {
-
-        if (!(config instanceof Config)) {
-            config = new Config();
+    const createSVGElement = (type, attributes = {}) => {
+        const element = document.createElementNS(sketch.namespace, type);
+        for (let [key, value] of Object.entries(attributes)) {
+            element.setAttribute(key, value);
         }
 
-        this.config = config;
-        this.points = points;
-        this.lines = lines;
-        this.svg = createSVG(this.config);
+        return element;
     }
 
-    /**
-     * Adds the [Lines]{@link Line} and points of the {@link Sketch} to an SVG document,
-     * after first removing duplicate lines.
-     * @param {*} svg - The SVG object reference.
-     */
-    draw() {
-        this.removeDuplicateLines();
-        this.drawLines(this.svg);
-        this.drawPoints(this.svg);
+    sketch.generateSVG = () => {
+        const svg = createSVGElement('svg', {
+            width: sketch.width,
+            height: sketch.height,
+            viewBox: `0 0 ${sketch.width} ${sketch.height}`,
+            style: `background-color: ${sketch.backgroundColor}`
+        })
+
+        document.body.appendChild(svg)
+        return svg;
     }
 
-    /**
-     * Removes duplicate [Lines]{@link Line} from the sketch.
-     */
-    removeDuplicateLines() {
-        let jsonObject = this.lines.map(JSON.stringify);
-        let uniqueSet = new Set(jsonObject);
-        let uniqueArray = Array.from(uniqueSet).map(JSON.parse)
-        this.lines = uniqueArray;
-    }
+    // sketch.addElements = () => {
+    //     const 
+    // }
 
-    /**
-     * Adds the [Lines]{@link Line} of the sketch to an SVG document.
-     * @param {*} svg 
-     */
-    drawLines(svg) {
-        if (this.config.showLines) {
-            for (let line of this.lines) {
-                drawLine(svg,
-                    line.a.x,
-                    line.a.y,
-                    line.b.x,
-                    line.b.y,
-                    {
-                    stroke: this.config.foregroundColour,
-                    strokeWidth: this.config.strokeWidth,
-                    linecap: this.config.linecap
-                })
-            }
-        }
-    }
-
-    /**
-     * Adds the points of the sketch to an SVG document.
-     * @param {*} svg 
-     */
-    drawPoints(svg) {
-        if (this.config.showPoints) {
-            for (let point of this.points) {
-                drawPoint(svg, point.x, point.y, this.config.foregroundColour, this.config.strokeWidth)
-            }
-        }
-    }
+    return sketch;
 }
