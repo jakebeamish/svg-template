@@ -1,8 +1,0 @@
-{
-    "source": {
-        "include": [ "source/", "README.md" ]
-    },
-    "opts": {
-        "destination": "docs/"
-    }
-}
